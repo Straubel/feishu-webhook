@@ -166,6 +166,42 @@ if err := sdk.SendText("Hello"); err != nil {
 }
 ```
 
+## 测试
+
+### 运行测试
+
+```bash
+# 运行所有测试
+go test ./common/feishu/
+
+# 运行测试并显示覆盖率
+go test -cover ./common/feishu/
+
+# 运行基准测试
+go test -bench=. ./common/feishu/
+
+# 运行特定测试
+go test -run TestSendText ./common/feishu/
+
+# 跳过集成测试（仅运行单元测试）
+go test -short ./common/feishu/
+```
+
+### 测试覆盖率
+
+```bash
+# 生成覆盖率报告
+go test -coverprofile=coverage.out ./common/feishu/
+go tool cover -html=coverage.out -o coverage.html
+```
+
+### 测试分类
+
+- **单元测试**: 测试各个函数和方法的基本功能
+- **集成测试**: 测试完整的消息发送流程
+- **基准测试**: 测试性能指标
+- **错误处理测试**: 测试各种错误场景
+
 ## 注意事项
 
 1. 请确保Webhook URL的正确性
